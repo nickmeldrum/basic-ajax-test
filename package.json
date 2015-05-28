@@ -1,0 +1,26 @@
+{
+  "name": "basic-ajax-test",
+  "version": "0.0.1",
+  "description": "module for testing the basic-ajax npm module as a user of the module.",
+  "main": "test.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "author": "Nick Meldrum <nick@nickmeldrum.com> (http://nickmeldrum.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "basic-ajax": "0.0.3"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.1.2",
+    "karma-chai": "^0.1.0",
+    "karma-growl-reporter": "^0.1.1",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.2.4",
+    "phantomjs": "^1.9.16",
+    "sinon": "^1.14.1"
+  }
+}
