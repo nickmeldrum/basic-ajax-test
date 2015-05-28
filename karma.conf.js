@@ -5,13 +5,11 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['browserify', 'mocha', 'chai'],
         files: [
-            'index.js',
             'test.js'
         ],
         preprocessors: {
-            'index.js': [ 'browserify' ],
             'test.js': [ 'browserify' ]
-            },
+        },
         reporters: ['progress', 'growl'],
         port: 9876,
         colors: true,
@@ -20,7 +18,7 @@ module.exports = function (config) {
         logLevel: config.LOG_INFO,
         browsers: ['PhantomJS'],
         browserify: {
-          debug: true
+            debug: true
         }
     });
 };
