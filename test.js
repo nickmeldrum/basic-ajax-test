@@ -13,31 +13,22 @@ describe('#ajax', function() {
         this.server.restore();
     });
 
-    it('200 response executes the "then" promise', function(done) {
-        this.server.respondWith('GET', 'http://localhost:8000/users', [404, { 'Content-Type': 'application/json' }, '[{"name": "Nick", "age": 21}, {"name": "John", "age": 18}]']);
+    it('200 response executes the "then" promise with json response as an object', function(done) {
+        this.server.respondWith('GET', 'http://localhost:8000/users', [200, { 'Content-Type': 'application/json' }, '[{"name": "Nick", "age": 21}, {"name": "John", "age": 18}]']);
 
         var promise = ajax.get('http://localhost:8000/users');
 
         promise.then(function handleGetUsers(response) {
-            console.log('then');
-
             response.status.should.equal(200);
-            //response.json.length.should.equaal(2);
             response.json[0].name.should.equal('Nick');
         })
         .fail(function handleGetUsersFailed(response) {
-            console.log('fail');
-            console.log(response);
-
-            false.should.equal(true);
+            if (response instanceof Error) throw response; // here to handle exceptions in then() function falling through to fail()
+            response.status.should.equal(200);
         })
         .catch(function (err) {
-            console.log('catch');
-            console.log(err);
-
             done(err); })
         .finally(function () {
-            console.log('finally');
             done();
         });
         
